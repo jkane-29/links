@@ -2,9 +2,9 @@
   position: relative;
   z-index: 100;
   display: block;
-  width: calc(100% - 32px);
+  width: calc(100% - 44px);
   max-width: 980px;
-  margin-left: 32px;
+  margin-left: 44px;
 }
 
 .SearchRow {
@@ -25,6 +25,10 @@
   min-width: 0;
   box-sizing: border-box;
   margin: 0;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .SearchResult {
@@ -128,6 +132,15 @@
   margin: 0;
   flex: 0 0 auto;
   white-space: nowrap;
+  border-bottom: 0 !important;
+  text-decoration: none;
+}
+
+.BrandLabel::before,
+.BrandLabel::after,
+.BrandTitle::before,
+.BrandTitle::after {
+  content: none !important;
 }
 
 .BrandWord {
@@ -145,6 +158,7 @@
   font-weight: 700;
   letter-spacing: 0.01em;
   line-height: 1;
+  text-decoration: none;
   border-bottom: 2px solid rgba(15, 45, 99, 0.28);
   padding-bottom: 3px;
 }
