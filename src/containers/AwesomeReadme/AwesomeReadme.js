@@ -202,7 +202,7 @@ class AwesomeReadme extends Component {
       block: 'center',
     });
 
-    document.getElementById(id).parentNode.style.backgroundColor = '#ff2e88';
+    document.getElementById(id).parentNode.style.backgroundColor = 'var(--dialectic-blue-100)';
 
     setTimeout(() => {
       if (document.getElementById(id)) {
@@ -221,35 +221,35 @@ class AwesomeReadme extends Component {
 
   getFontSize = (level) => {
     let size = '1.2rem';
-    let color = 'black';
+    let color = 'var(--dialectic-blue-900)';
     switch (level) {
       case 1:
         size = '1.2rem';
-        color = 'black';
+        color = 'var(--dialectic-blue-900)';
         break;
       case 2:
         size = '1rem';
-        color = 'grey';
+        color = 'var(--dialectic-muted)';
         break;
       case 3:
         size = '0.8rem';
-        color = 'red';
+        color = 'var(--dialectic-blue-700)';
         break;
       case 4:
         size = '0.8rem';
-        color = 'red';
+        color = 'var(--dialectic-blue-700)';
         break;
       case 5:
         size = '0.8rem';
-        color = 'red';
+        color = 'var(--dialectic-blue-700)';
         break;
       case 6:
         size = '0.8rem';
-        color = 'red';
+        color = 'var(--dialectic-blue-700)';
         break;
       default:
         size = '0.8rem';
-        color = 'red';
+        color = 'var(--dialectic-blue-700)';
         break;
     }
 

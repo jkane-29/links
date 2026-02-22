@@ -22,6 +22,17 @@ Features
 ✔ Access an awesome repo by `https://dev.awesomelists.top/#/sindresorhus/awesome-nodejs`. (you can BOOKMARK it!)  
 ✔ Use Github API to retrieve README file of an awesome repo, so it's up-to-date.  
 
+Local CSV Link Search
+==
+- Put your link data in `public/filter_links.csv` (current expected headers: `episode_number, guest, episode_title, url, twitter, type`).
+- The app now builds broad categories from row metadata and domain hints, then exposes those categories in the left menu.
+- Search supports semantic-style matching across guest, episode title, type, category, domain, and inferred tags.
+- Category and search result display formatting can be adjusted in:
+  - `src/components/AwesomeLists/AwesomeLists.js`
+  - `src/components/AwesomeInput/AwesomeInput.js`
+  - `src/components/AwesomeLists/AwesomeLists.module.css`
+  - `src/components/AwesomeInput/AwesomeInput.module.css`
+
 Supported awesome lists
 ==
 You can see the JSON format of sindresorhus/awesome in [here](https://github.com/lockys/Awesome.json/blob/master/awesome/awesome.json).
@@ -73,4 +84,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-

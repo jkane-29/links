@@ -1,8 +1,80 @@
-body {
+:root {
+  --dialectic-blue-900: #0f2d63;
+  --dialectic-blue-800: #184089;
+  --dialectic-blue-700: #1f56b7;
+  --dialectic-blue-100: #deebff;
+  --dialectic-blue-50: #f3f8ff;
+  --dialectic-white: #ffffff;
+  --dialectic-text: #122746;
+  --dialectic-muted: #4f6688;
+  --dialectic-border: #c5d9fb;
+  --dialectic-shadow: 0 12px 32px rgba(25, 69, 138, 0.12);
+}
+
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(47, 106, 195, 0.12), transparent 40%),
+    radial-gradient(circle at 100% 20%, rgba(47, 106, 195, 0.1), transparent 38%),
+    var(--dialectic-blue-50);
+  color: var(--dialectic-text);
 }
 
 .grid {
   flex-wrap: nowrap !important;
+}
+
+.hack,
+.hack p,
+.hack li,
+.hack a,
+.hack h1,
+.hack h2,
+.hack h3,
+.hack h4,
+.hack h5,
+.hack h6 {
+  color: var(--dialectic-text);
+}
+
+.hack a {
+  color: var(--dialectic-blue-700);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.hack a:hover {
+  color: var(--dialectic-blue-900);
+  border-color: var(--dialectic-blue-700);
+}
+
+.hack .alert {
+  border-color: var(--dialectic-border);
+  background: var(--dialectic-blue-50);
+  color: var(--dialectic-blue-900);
+}
+
+.hack .form-control {
+  border: 1px solid var(--dialectic-border);
+  border-radius: 12px;
+  background: var(--dialectic-white);
+  color: var(--dialectic-text);
+}
+
+.hack .form-control:focus {
+  border-color: var(--dialectic-blue-700);
+  box-shadow: 0 0 0 3px rgba(40, 99, 183, 0.16);
+}
+
+.github-corner svg {
+  fill: var(--dialectic-blue-100) !important;
+  color: var(--dialectic-blue-900) !important;
 }

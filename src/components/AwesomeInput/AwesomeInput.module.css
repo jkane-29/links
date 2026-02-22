@@ -2,19 +2,47 @@
   position: relative;
   z-index: 100;
   display: inline-block;
+  width: min(700px, 100%);
 }
 
 .SearchResult {
   position: absolute;
-  left: 0px;
-  width: 360px;
-  background-color: white;
-  border-bottom: 2px solid #ccc;
-  border-left: 2px solid #ccc;
-  border-right: 2px solid #ccc;
-  padding: 3px;
+  left: 0;
+  width: 100%;
+  max-height: 420px;
+  background: var(--dialectic-white);
+  border: 1px solid var(--dialectic-border);
+  border-top: none;
+  border-radius: 0 0 14px 14px;
+  padding: 10px;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-y: auto;
+  box-shadow: 0 14px 28px rgba(24, 68, 138, 0.16);
+}
+
+.SearchResult ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.SearchResult li {
+  border-bottom: 1px solid #e6efff;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+}
+
+.SearchResult li:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.ResultMeta {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--dialectic-muted);
+  margin-bottom: 4px;
 }
 
 @media (max-width: 768px) {
@@ -24,15 +52,17 @@
 
   .SearchResult {
     width: 100%;
+    max-height: 320px;
   }
 }
 
 .HomeIcon {
-  margin-right: 2px;
+  margin-right: 6px;
   cursor: pointer;
-  transition: color 0.3s ease-in-out;
+  color: var(--dialectic-blue-700);
+  transition: color 0.2s ease;
 }
 
 .HomeIcon:hover {
-  color: red;
+  color: var(--dialectic-blue-900);
 }

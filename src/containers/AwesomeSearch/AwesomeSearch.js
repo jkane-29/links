@@ -5,7 +5,6 @@ import AwesomeLists from '../../components/AwesomeLists/AwesomeLists';
 import AwesomeInput from '../../components/AwesomeInput/AwesomeInput';
 import AwesomeReadme from '../AwesomeReadme/AwesomeReadme';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import axios from 'axios';
 import Fuse from 'fuse.js';
 import {Route, withRouter} from 'react-router-dom';
 import Backdrop from '../../components/UI/Backdrop/Backdrop';
@@ -13,6 +12,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 import classes from './AwesomeSearch.module.css';
 import {MdDarkMode, MdLightMode} from 'react-icons/md';
+import {buildLinkEntries, groupEntriesByCategory, parseCsv} from '../../utils/linkData';
 
 class AwesomeSearch extends Component {
     state = {
@@ -26,39 +26,31 @@ class AwesomeSearch extends Component {
         showMenu: false,
     };
 
-    getSubjectEntries = () => {
-        axios
-            .get(
-                'https://raw.githubusercontent.com/lockys/awesome.json/master/awesome/awesome.json'
-            )
-            .then((subjects) => {
-                this.setState({
-                    subjects: subjects.data,
-                    errorMessage: '',
-                });
+    getSubjectEntries = async () => {
+        try {
+            const csvPath = window.location.protocol === 'file:'
+                ? './filter_links.csv'
+                : `${process.env.PUBLIC_URL || ''}/filter_links.csv`;
+            const response = await fetch(csvPath);
+            if (!response.ok) {
+                throw new Error(`Unable to read CSV: ${response.status}`);
+            }
 
-                let subjectsArray = Object.keys(subjects.data)
-                    .map((subject) => {
-                        return subjects.data[subject];
-                    })
-                    .reduce((arr, el) => {
-                        return arr.concat(el);
-                    }, []);
+            const csv = await response.text();
+            const rows = parseCsv(csv);
+            const entries = buildLinkEntries(rows);
+            const groupedEntries = groupEntriesByCategory(entries);
 
-                this.setState({subjectsArray: subjectsArray});
-
-                if (!this.state.subjects) {
-                    this.setState({
-                        errorMessage:
-                            'There was an error. Unable to load the Awesome subjects.',
-                    });
-                }
-            })
-            .catch((error) => {
-                this.setState({
-                    errorMessage: `There was an error. Unable to load the Awesome subjects: ${error}.`,
-                });
+            this.setState({
+                subjects: groupedEntries,
+                subjectsArray: entries,
+                errorMessage: '',
             });
+        } catch (error) {
+            this.setState({
+                errorMessage: `There was an error. Unable to load link data: ${error}.`,
+            });
+        }
     };
 
     componentDidMount() {
@@ -70,16 +62,36 @@ class AwesomeSearch extends Component {
     };
 
     searchInputOnChangeHandler = (event) => {
+        const search = event.target.value;
+
         this.setState({
-            search: event.target.value,
+            search,
         });
 
+        if (!search.trim()) {
+            this.setState({searchResult: []});
+            return;
+        }
+
         const options = {
-            keys: ['name'],
+            includeScore: true,
+            shouldSort: true,
+            threshold: 0.34,
+            ignoreLocation: true,
+            minMatchCharLength: 2,
+            keys: [
+                {name: 'guest', weight: 0.23},
+                {name: 'episodeTitle', weight: 0.2},
+                {name: 'type', weight: 0.17},
+                {name: 'category', weight: 0.14},
+                {name: 'domain', weight: 0.1},
+                {name: 'tags', weight: 0.08},
+                {name: 'semanticText', weight: 0.08},
+            ],
         };
 
         const fuse = new Fuse(this.state.subjectsArray, options);
-        const result = fuse.search(event.target.value);
+        const result = fuse.search(search);
 
         this.setState({searchResult: result.slice(0, 20)});
     };
@@ -94,7 +106,7 @@ class AwesomeSearch extends Component {
 
     setMdHandler = (md) => {
         this.setState({
-            md: md,
+            md,
         });
     };
 
@@ -108,6 +120,14 @@ class AwesomeSearch extends Component {
     };
 
     render() {
+        if (this.state.errorMessage) {
+            return <div className="alert alert-error">{this.state.errorMessage}</div>;
+        }
+
+        const topics = this.state.subjects
+            ? Object.keys(this.state.subjects).sort((a, b) => a.localeCompare(b))
+            : [];
+
         return (
             <div className={`${classes.AwesomeSearch} ${classes[this.props.theme]}`}>
                 <div className="grid">
@@ -157,12 +177,12 @@ class AwesomeSearch extends Component {
                         >
                             {this.state.showMenu ? (
                                 <AwesomeRwdMenu
-                                    topics={Object.keys(this.state.subjects)}
+                                    topics={topics}
                                     topicOnClickHandler={this.topicOnClickHandler}
                                 />
                             ) : null}
                             <AwesomeListMenu
-                                topics={Object.keys(this.state.subjects)}
+                                topics={topics}
                                 topicOnClickHandler={this.topicOnClickHandler}
                             />
                         </div>

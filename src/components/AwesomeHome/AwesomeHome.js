@@ -9,8 +9,8 @@ const Homepage = () => {
                     textAlign: 'center',
                 }}
             >
-                [<span style={{color: '#C7372F'}}>Awesome</span>
-                <span style={{color: '#C7372F'}}>Search</span> makes you find what you
+                [<span style={{color: 'var(--dialectic-blue-700)'}}>Awesome</span>
+                <span style={{color: 'var(--dialectic-blue-700)'}}>Search</span> makes you find what you
                 want in awesome lists more quickly.]
             </p>
 
@@ -160,8 +160,8 @@ const Homepage = () => {
                     float: 'right',
                 }}
             >
-                <span style={{color: '#C7372F'}}>Awesome</span>
-                <span style={{color: '#C7372F'}}>Search</span> from 2015 to{' '}
+                <span style={{color: 'var(--dialectic-blue-700)'}}>Awesome</span>
+                <span style={{color: 'var(--dialectic-blue-700)'}}>Search</span> from 2015 to{' '}
                 {new Date().getFullYear()}
             </section>
         </div>

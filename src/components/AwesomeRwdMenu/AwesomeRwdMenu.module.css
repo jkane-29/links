@@ -1,5 +1,23 @@
 .AwesomeRwdMenu {
   display: none;
+  margin-bottom: 14px;
+  padding: 10px;
+  border: 1px solid var(--dialectic-border);
+  border-radius: 10px;
+  background: var(--dialectic-white);
+}
+
+.AwesomeRwdMenu :global(.menu-item) {
+  display: block;
+  margin-bottom: 6px;
+  padding: 8px;
+  border-radius: 8px;
+  color: var(--dialectic-blue-800);
+}
+
+.AwesomeRwdMenu :global(.menu-item:hover) {
+  background: var(--dialectic-blue-100);
+  border-bottom: none;
 }
 
 @media (max-width: 768px) {

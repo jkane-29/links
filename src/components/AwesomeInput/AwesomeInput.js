@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import {withRouter} from 'react-router-dom';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faHome} from '@fortawesome/free-solid-svg-icons';
 import classes from './AwesomeInput.module.css';
 
 const awesomeInput = (props) => {
@@ -18,13 +18,13 @@ const awesomeInput = (props) => {
               props.homeOnClick('');
             }}
           />
-          <span style={{ color: '#C7372F' }}>Awesome</span>
-          <span style={{ color: '#C7372F' }}>Search</span>
+          <span style={{ color: 'var(--dialectic-blue-700)' }}>Awesome</span>
+          <span style={{ color: 'var(--dialectic-blue-700)' }}>Search</span>
         </label>
         <input
           id='subject'
           type='text'
-          placeholder='Try To Search Node.js'
+          placeholder='Search by guest, topic, type, or domain'
           className='form-control'
           onChange={props.searchOnchange}
           value={props.value}
@@ -34,13 +34,15 @@ const awesomeInput = (props) => {
           <div className={classes.SearchResult}>
             <ul>
               {props.searchResult.length === 0 ? (
-                <span>Please input something :)</span>
+                <span>Try a keyword like AI, investing, newsletter, or a guest name.</span>
               ) : null}
-              {props.searchResult.map((el, idx) => {
+              {props.searchResult.map((el) => {
                 return (
-                  <li key={el.item.name + idx}>
-                    {el.item.cate}/
-                    <Link to={`/${el.item.repo}`}>{el.item.name}</Link>
+                  <li key={el.item.id}>
+                    <span className={classes.ResultMeta}>{el.item.category} | {el.item.guest}</span>
+                    <a href={el.item.url} target='_blank' rel='noopener noreferrer'>
+                      {el.item.type || el.item.episodeTitle}
+                    </a>
                   </li>
                 );
               })}

@@ -4,7 +4,7 @@
 }
 
 a.ViewOnGithubBtn {
-  border-bottom: 0px;
+  border-bottom: 0;
 }
 
 .ReadmeInfo {
@@ -14,12 +14,15 @@ a.ViewOnGithubBtn {
   top: -11px;
   z-index: 10;
   padding: 10px;
-  opacity: 0.9;
+  opacity: 0.95;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--dialectic-border);
+  border-radius: 10px;
 }
 
 .TOCButton {
   cursor: pointer;
-  color: #ff2e88;
+  color: var(--dialectic-blue-700);
 }
 
 .ReadmeCategory {
@@ -29,10 +32,11 @@ a.ViewOnGithubBtn {
   max-height: 400px;
   max-width: 300px;
   overflow: scroll;
-  background-color: white;
-  border: 1px solid lightgray;
+  background: var(--dialectic-white);
+  border: 1px solid var(--dialectic-border);
   z-index: 50;
   padding: 15px;
+  border-radius: 10px;
 }
 
 .ReadmeCategoryCloseButton {
@@ -40,16 +44,16 @@ a.ViewOnGithubBtn {
   font-size: 1.5rem;
   position: sticky;
   top: 0;
-  color: grey;
+  color: var(--dialectic-muted);
 }
 
-.ReadmeCategoryCloseButton :hover {
-  color: #ff2e88;
+.ReadmeCategoryCloseButton:hover {
+  color: var(--dialectic-blue-800);
 }
 
 .ReadmeCategory > div {
   cursor: pointer;
-  color: #ff2e88;
+  color: var(--dialectic-blue-700);
 }
 
 .ReadmeCategory > div:hover {
@@ -65,7 +69,7 @@ a.ViewOnGithubBtn {
 }
 
 .scrollToTop:hover {
-  color: red;
+  color: var(--dialectic-blue-900);
 }
 
 @media (min-width: 768px) {

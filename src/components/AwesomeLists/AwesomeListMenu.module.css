@@ -1,6 +1,26 @@
 .AwesomeListMenu {
   position: sticky;
-  top: 0px;
+  top: 0;
+  padding: 10px;
+  border: 1px solid var(--dialectic-border);
+  border-radius: 12px;
+  background: var(--dialectic-white);
+  box-shadow: 0 4px 14px rgba(22, 67, 134, 0.08);
+}
+
+.AwesomeListMenu :global(.menu-item) {
+  display: block;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--dialectic-blue-800);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.AwesomeListMenu :global(.menu-item:hover) {
+  background: var(--dialectic-blue-100);
+  color: var(--dialectic-blue-900);
+  border-bottom: none;
 }
 
 @media (max-width: 768px) {
