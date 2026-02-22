@@ -34,11 +34,21 @@
 .TopBar {
   position: sticky;
   top: 0;
-  z-index: 80;
-  padding: 8px 0 10px;
+  z-index: 120;
+  padding: 8px 8px 10px;
   margin-bottom: 6px;
   background: linear-gradient(180deg, rgba(249, 252, 255, 0.97), rgba(249, 252, 255, 0.9));
   backdrop-filter: blur(3px);
+  overflow: visible;
+}
+
+.TopBar :global(.cell) {
+  overflow: visible;
+}
+
+.TopBar :global(.form-group) {
+  margin-bottom: 0;
+  overflow: visible;
 }
 
 .BodyLayout {
@@ -78,6 +88,8 @@
 
   .TopBar {
     top: 0;
+    padding-left: 4px;
+    padding-right: 4px;
     padding-top: 2px;
     background: rgba(249, 252, 255, 0.95);
   }

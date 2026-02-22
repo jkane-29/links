@@ -31,6 +31,7 @@
   top: calc(100% - 1px);
   left: 0;
   width: 100%;
+  z-index: 160;
   max-height: 420px;
   background: var(--dialectic-white);
   border: 1px solid var(--dialectic-border);
