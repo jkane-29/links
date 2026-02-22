@@ -16,21 +16,23 @@
   box-shadow: 0 8px 22px rgba(21, 65, 129, 0.1);
 }
 
-.LinkCard h3 {
-  margin: 0 0 8px;
-  font-size: 1rem;
+.LinkTitle {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.06rem;
+  font-weight: 700;
   line-height: 1.35;
   color: var(--dialectic-blue-900);
 }
 
 .Meta {
-  margin: 4px 0;
-  font-size: 0.88rem;
-  color: var(--dialectic-text);
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--dialectic-muted);
 }
 
 .Domain {
-  margin: 8px 0;
+  margin: 4px 0 0;
   color: var(--dialectic-muted);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
 }

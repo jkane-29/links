@@ -2,20 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './AwesomeRwdMenu.module.css';
 
-const AwesomeRwdMenu = ({ topics, topicOnClickHandler }) => {
+const AwesomeRwdMenu = ({ topics, topicDescriptions, topicOnClickHandler }) => {
   return (
     <div className={`menu ${classes.AwesomeRwdMenu}`}>
       {topics.map((topic) => {
+        const description = topicDescriptions[topic];
+
         return (
           <Link
             key={topic}
-            className="menu-item"
+            className={`menu-item ${classes.MenuItem}`}
             to="/"
             onClick={() => {
               topicOnClickHandler(topic);
             }}
           >
-            {topic}
+            <span className={classes.TopicName}>{topic}</span>
+            {description ? <span className={classes.TopicDescription}>{description}</span> : null}
           </Link>
         );
       })}

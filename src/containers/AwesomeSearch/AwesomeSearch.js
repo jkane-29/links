@@ -11,7 +11,6 @@ import Backdrop from '../../components/UI/Backdrop/Backdrop';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 import classes from './AwesomeSearch.module.css';
-import {MdDarkMode, MdLightMode} from 'react-icons/md';
 import {buildLinkEntries, groupEntriesByCategory, parseCsv} from '../../utils/linkData';
 
 class AwesomeSearch extends Component {
@@ -125,11 +124,19 @@ class AwesomeSearch extends Component {
         }
 
         const topics = this.state.subjects
-            ? Object.keys(this.state.subjects).sort((a, b) => a.localeCompare(b))
+            ? Object.keys(this.state.subjects)
+                .filter((topic) => topic !== 'Community')
+                .sort((a, b) => a.localeCompare(b))
             : [];
+        const topicDescriptions = topics.reduce((acc, topic) => {
+            const entries = this.state.subjects[topic] || [];
+            const sample = entries.find((entry) => entry.type && entry.type.trim());
+            acc[topic] = sample ? sample.type : '';
+            return acc;
+        }, {});
 
         return (
-            <div className={`${classes.AwesomeSearch} ${classes[this.props.theme]}`}>
+            <div className={`${classes.AwesomeSearch} ${classes['normal-theme']}`}>
                 <div className="grid">
                     <div className="cell -12of12">
                         <AwesomeInput
@@ -147,23 +154,6 @@ class AwesomeSearch extends Component {
                         >
                             <FontAwesomeIcon icon={faBars}/>
                         </div>
-
-                        <div
-                            className="btn-group"
-                            style={{float: 'right', fontSize: '2rem', cursor: 'pointer', verticalAlign: 'middle'}}
-                        >
-                            {!this.props.isDark ? <MdDarkMode
-                                onClick={() => {
-                                    localStorage.setItem('__isDark', 'true');
-                                    this.props.onThemeChange(true);
-                                }}
-                            /> : <MdLightMode
-                                onClick={() => {
-                                    localStorage.setItem('__isDark', 'false');
-                                    this.props.onThemeChange(false);
-                                }}
-                            />}
-                        </div>
                     </div>
                 </div>
 
@@ -178,11 +168,13 @@ class AwesomeSearch extends Component {
                             {this.state.showMenu ? (
                                 <AwesomeRwdMenu
                                     topics={topics}
+                                    topicDescriptions={topicDescriptions}
                                     topicOnClickHandler={this.topicOnClickHandler}
                                 />
                             ) : null}
                             <AwesomeListMenu
                                 topics={topics}
+                                topicDescriptions={topicDescriptions}
                                 topicOnClickHandler={this.topicOnClickHandler}
                             />
                         </div>

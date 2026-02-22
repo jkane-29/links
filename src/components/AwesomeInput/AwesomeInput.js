@@ -8,7 +8,7 @@ const awesomeInput = (props) => {
   return (
     <div className={classes.AwesomeInput}>
       <fieldset className='form-group'>
-        <label htmlFor='subject'>
+        <label htmlFor='subject' className={classes.BrandLabel}>
           <FontAwesomeIcon
             icon={faHome}
             className={classes.HomeIcon}
@@ -18,8 +18,8 @@ const awesomeInput = (props) => {
               props.homeOnClick('');
             }}
           />
-          <span style={{ color: 'var(--dialectic-blue-700)' }}>Awesome</span>
-          <span style={{ color: 'var(--dialectic-blue-700)' }}>Search</span>
+          <span className={classes.BrandWord}>Dialectic</span>
+          <span className={classes.BrandWord}>Links</span>
         </label>
         <input
           id='subject'
@@ -37,12 +37,14 @@ const awesomeInput = (props) => {
                 <span>Try a keyword like AI, investing, newsletter, or a guest name.</span>
               ) : null}
               {props.searchResult.map((el) => {
+                const linkLabel = el.item.type || el.item.domain || 'Open link';
+
                 return (
                   <li key={el.item.id}>
-                    <span className={classes.ResultMeta}>{el.item.category} | {el.item.guest}</span>
-                    <a href={el.item.url} target='_blank' rel='noopener noreferrer'>
-                      {el.item.type || el.item.episodeTitle}
+                    <a className={classes.ResultTitle} href={el.item.url} target='_blank' rel='noopener noreferrer'>
+                      {linkLabel}
                     </a>
+                    <span className={classes.ResultMeta}>{el.item.guest}</span>
                   </li>
                 );
               })}

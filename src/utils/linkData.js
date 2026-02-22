@@ -28,10 +28,6 @@ const CATEGORY_HINTS = [
     keywords: ['course', 'guide', 'playbook', 'lecture', 'paper', 'book'],
   },
   {
-    name: 'Community',
-    keywords: ['telegram', 'discord', 'forum', 'community', 'join'],
-  },
-  {
     name: 'Tools',
     keywords: ['github', 'tool', 'app', 'software', 'platform'],
   },

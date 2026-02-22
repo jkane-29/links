@@ -25,21 +25,26 @@ const awesomeLists = ({ topic, subjects = [] }) => {
   return (
     <div className={classes.AwesomeLists}>
       <div className='alert alert-success'>
-        Category view is sorted by guest and link type.
+        Category view is sorted by link description.
       </div>
       <h1>{topic}</h1>
 
       <div className={classes.LinkGrid}>
         {sortedSubjects.map((subject) => {
+          const linkLabel = subject.type || subject.domain || 'Open link';
+
           return (
             <article key={subject.id} className={classes.LinkCard}>
-              <h3>{subject.type || subject.episodeTitle}</h3>
-              <p className={classes.Meta}>Guest: {subject.guest}</p>
-              <p className={classes.Meta}>Episode {subject.episode}</p>
-              <p className={classes.Domain}>{subject.domain || 'Unknown source'}</p>
-              <a href={subject.url} target='_blank' rel='noopener noreferrer'>
-                Open link
+              <a
+                className={classes.LinkTitle}
+                href={subject.url}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                {linkLabel}
               </a>
+              <p className={classes.Meta}>{subject.guest}</p>
+              <p className={classes.Domain}>{subject.domain || 'Unknown source'}</p>
             </article>
           );
         })}

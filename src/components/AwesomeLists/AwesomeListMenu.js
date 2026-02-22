@@ -2,20 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './AwesomeListMenu.module.css';
 
-const awesomeListMenu = ({ topics, topicOnClickHandler }) => {
+const awesomeListMenu = ({ topics, topicDescriptions, topicOnClickHandler }) => {
   return (
     <div className={`menu ${classes.AwesomeListMenu}`}>
       {topics.map((topic) => {
+        const description = topicDescriptions[topic];
+
         return (
           <Link
             key={topic}
-            className="menu-item"
+            className={`menu-item ${classes.MenuItem}`}
             to="/"
             onClick={() => {
               topicOnClickHandler(topic);
             }}
           >
-            {topic}
+            <span className={classes.TopicName}>{topic}</span>
+            {description ? <span className={classes.TopicDescription}>{description}</span> : null}
           </Link>
         );
       })}

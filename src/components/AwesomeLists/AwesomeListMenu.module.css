@@ -23,6 +23,28 @@
   border-bottom: none;
 }
 
+.MenuItem {
+  border-bottom: none;
+}
+
+.TopicName {
+  display: block;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--dialectic-blue-900);
+  margin-bottom: 2px;
+}
+
+.TopicDescription {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--dialectic-muted);
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media (max-width: 768px) {
   .AwesomeListMenu {
     display: none;
