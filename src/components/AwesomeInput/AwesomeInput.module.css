@@ -2,9 +2,9 @@
   position: relative;
   z-index: 100;
   display: block;
-  width: calc(100% - 44px);
+  width: calc(100% - 50px);
   max-width: 980px;
-  margin-left: 44px;
+  margin-left: 50px;
 }
 
 .SearchRow {
