@@ -1,6 +1,5 @@
 .AwesomeListMenu {
-  position: sticky;
-  top: 0;
+  position: static;
   padding: 10px;
   border: 1px solid var(--dialectic-border);
   border-radius: 12px;

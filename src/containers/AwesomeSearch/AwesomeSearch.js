@@ -137,7 +137,7 @@ class AwesomeSearch extends Component {
 
         return (
             <div className={`${classes.AwesomeSearch} ${classes['normal-theme']}`}>
-                <div className="grid">
+                <div className={`grid ${classes.TopBar}`}>
                     <div className="cell -12of12">
                         <AwesomeInput
                             searchOnchange={this.searchInputOnChangeHandler}
