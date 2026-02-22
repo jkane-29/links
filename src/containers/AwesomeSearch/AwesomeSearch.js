@@ -81,7 +81,7 @@ class AwesomeSearch extends Component {
             keys: [
                 {name: 'guest', weight: 0.23},
                 {name: 'episodeTitle', weight: 0.2},
-                {name: 'type', weight: 0.17},
+                {name: 'description', weight: 0.17},
                 {name: 'category', weight: 0.14},
                 {name: 'domain', weight: 0.1},
                 {name: 'tags', weight: 0.08},
@@ -130,8 +130,8 @@ class AwesomeSearch extends Component {
             : [];
         const topicDescriptions = topics.reduce((acc, topic) => {
             const entries = this.state.subjects[topic] || [];
-            const sample = entries.find((entry) => entry.type && entry.type.trim());
-            acc[topic] = sample ? sample.type : '';
+            const sample = entries.find((entry) => entry.description && entry.description.trim());
+            acc[topic] = sample ? sample.description : '';
             return acc;
         }, {});
 
@@ -158,32 +158,8 @@ class AwesomeSearch extends Component {
                 </div>
 
                 {this.state.subjects ? (
-                    <div className="grid">
-                        <div
-                            className="cell -2of12"
-                            style={{
-                                width: '100%',
-                            }}
-                        >
-                            {this.state.showMenu ? (
-                                <AwesomeRwdMenu
-                                    topics={topics}
-                                    topicDescriptions={topicDescriptions}
-                                    topicOnClickHandler={this.topicOnClickHandler}
-                                />
-                            ) : null}
-                            <AwesomeListMenu
-                                topics={topics}
-                                topicDescriptions={topicDescriptions}
-                                topicOnClickHandler={this.topicOnClickHandler}
-                            />
-                        </div>
-                        <div
-                            className="cell -10of12"
-                            style={{
-                                width: '100%',
-                            }}
-                        >
+                    <div className={classes.BodyLayout}>
+                        <div className={classes.ContentPane}>
                             <Route
                                 path="/"
                                 exact
@@ -209,6 +185,20 @@ class AwesomeSearch extends Component {
                                 }}
                             />
                         </div>
+                        <aside className={classes.SidebarPane}>
+                            {this.state.showMenu ? (
+                                <AwesomeRwdMenu
+                                    topics={topics}
+                                    topicDescriptions={topicDescriptions}
+                                    topicOnClickHandler={this.topicOnClickHandler}
+                                />
+                            ) : null}
+                            <AwesomeListMenu
+                                topics={topics}
+                                topicDescriptions={topicDescriptions}
+                                topicOnClickHandler={this.topicOnClickHandler}
+                            />
+                        </aside>
 
                         <Backdrop
                             show={this.state.showResult}

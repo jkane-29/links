@@ -24,7 +24,7 @@ const awesomeInput = (props) => {
         <input
           id='subject'
           type='text'
-          placeholder='Search by guest, topic, type, or domain'
+          placeholder='Search by guest, topic, description, or domain'
           className='form-control'
           onChange={props.searchOnchange}
           value={props.value}
@@ -37,14 +37,15 @@ const awesomeInput = (props) => {
                 <span>Try a keyword like AI, investing, newsletter, or a guest name.</span>
               ) : null}
               {props.searchResult.map((el) => {
-                const linkLabel = el.item.type || el.item.domain || 'Open link';
+                const linkLabel = el.item.description || el.item.domain || 'Open link';
 
                 return (
                   <li key={el.item.id}>
+                    <span className={classes.ResultMeta}>Description</span>
                     <a className={classes.ResultTitle} href={el.item.url} target='_blank' rel='noopener noreferrer'>
                       {linkLabel}
                     </a>
-                    <span className={classes.ResultMeta}>{el.item.guest}</span>
+                    <span className={classes.ResultSubMeta}>{el.item.guest}</span>
                   </li>
                 );
               })}

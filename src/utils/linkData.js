@@ -108,7 +108,7 @@ const normalizeText = (value) =>
 
 const inferGeneralCategory = (row) => {
   const combined = normalizeText(
-    [row.type, row.episode_title, row.guest, row.domain, row.url].filter(Boolean).join(' ')
+    [row.description, row.episode_title, row.guest, row.domain, row.url].filter(Boolean).join(' ')
   );
 
   const match = CATEGORY_HINTS.find((candidate) =>
@@ -120,7 +120,7 @@ const inferGeneralCategory = (row) => {
 
 const inferTags = (row) => {
   const raw = normalizeText(
-    [row.type, row.episode_title, row.guest, row.domain].filter(Boolean).join(' ')
+    [row.description, row.episode_title, row.guest, row.domain].filter(Boolean).join(' ')
   );
 
   const parts = raw
@@ -164,9 +164,10 @@ export const parseCsv = (csvText) => {
 
 export const buildLinkEntries = (rows) => {
   return rows.map((row, index) => {
+    const description = row.type;
     const domain = getDomain(row.url);
-    const category = inferGeneralCategory({...row, domain});
-    const tags = inferTags({...row, domain});
+    const category = inferGeneralCategory({...row, description, domain});
+    const tags = inferTags({...row, description, domain});
 
     return {
       id: `${row.episode_number || 'ep'}-${index}`,
@@ -174,6 +175,7 @@ export const buildLinkEntries = (rows) => {
       guest: row.guest,
       episodeTitle: row.episode_title,
       url: row.url,
+      description,
       type: row.type,
       domain,
       category,
@@ -181,7 +183,7 @@ export const buildLinkEntries = (rows) => {
       semanticText: [
         row.guest,
         row.episode_title,
-        row.type,
+        description,
         category,
         domain,
         tags.join(' '),

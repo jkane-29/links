@@ -31,6 +31,25 @@
   color: var(--dialectic-blue-800);
 }
 
+.BodyLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 18px;
+  align-items: start;
+}
+
+.ContentPane {
+  min-width: 0;
+}
+
+.SidebarPane {
+  position: sticky;
+  top: 12px;
+  align-self: start;
+  max-height: calc(100vh - 42px);
+  overflow-y: auto;
+}
+
 @media (max-width: 768px) {
   .AwesomeSearch {
     width: calc(100% - 16px);
@@ -38,6 +57,16 @@
     padding: 14px;
     min-height: calc(100vh - 16px);
     border-radius: 14px;
+  }
+
+  .BodyLayout {
+    display: block;
+  }
+
+  .SidebarPane {
+    position: static;
+    max-height: none;
+    overflow: visible;
   }
 
   .TocButton {

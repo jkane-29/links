@@ -8,8 +8,8 @@ const awesomeLists = ({ topic, subjects = [] }) => {
   }
 
   const sortedSubjects = [...subjects].sort((a, b) => {
-    const aText = `${a.guest} ${a.type}`.toUpperCase();
-    const bText = `${b.guest} ${b.type}`.toUpperCase();
+    const aText = `${a.guest} ${a.description}`.toUpperCase();
+    const bText = `${b.guest} ${b.description}`.toUpperCase();
 
     if (aText < bText) {
       return -1;
@@ -31,10 +31,11 @@ const awesomeLists = ({ topic, subjects = [] }) => {
 
       <div className={classes.LinkGrid}>
         {sortedSubjects.map((subject) => {
-          const linkLabel = subject.type || subject.domain || 'Open link';
+          const linkLabel = subject.description || subject.domain || 'Open link';
 
           return (
             <article key={subject.id} className={classes.LinkCard}>
+              <p className={classes.MetaLabel}>Description</p>
               <a
                 className={classes.LinkTitle}
                 href={subject.url}

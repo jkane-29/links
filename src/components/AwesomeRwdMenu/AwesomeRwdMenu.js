@@ -18,7 +18,7 @@ const AwesomeRwdMenu = ({ topics, topicDescriptions, topicOnClickHandler }) => {
             }}
           >
             <span className={classes.TopicName}>{topic}</span>
-            {description ? <span className={classes.TopicDescription}>{description}</span> : null}
+            {description ? <span className={classes.TopicDescription}>Description: {description}</span> : null}
           </Link>
         );
       })}
