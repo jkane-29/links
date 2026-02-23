@@ -190,12 +190,14 @@ class AwesomeSearch extends Component {
                                 <AwesomeRwdMenu
                                     topics={topics}
                                     topicDescriptions={topicDescriptions}
+                                    selectedTopic={this.state.selectedSubject}
                                     topicOnClickHandler={this.topicOnClickHandler}
                                 />
                             ) : null}
                             <AwesomeListMenu
                                 topics={topics}
                                 topicDescriptions={topicDescriptions}
+                                selectedTopic={this.state.selectedSubject}
                                 topicOnClickHandler={this.topicOnClickHandler}
                             />
                         </aside>

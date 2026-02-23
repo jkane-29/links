@@ -24,6 +24,15 @@
   border-bottom: none;
 }
 
+.SelectedTopic {
+  background: #ff2e88;
+}
+
+.SelectedTopic .TopicName,
+.SelectedTopic .TopicDescription {
+  color: #fff;
+}
+
 .TopicName {
   display: block;
   font-weight: 700;

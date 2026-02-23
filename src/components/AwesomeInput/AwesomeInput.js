@@ -39,10 +39,11 @@ const awesomeInput = (props) => {
                   ) : null}
                   {props.searchResult.map((el) => {
                     const linkLabel = el.item.description || el.item.domain || 'Open link';
+                    const linkMeta = el.item.twitter || 'Description';
 
                     return (
                       <li key={el.item.id}>
-                        <span className={classes.ResultMeta}>Description</span>
+                        <span className={classes.ResultMeta}>{linkMeta}</span>
                         <a className={classes.ResultTitle} href={el.item.url} target='_blank' rel='noopener noreferrer'>
                           {linkLabel}
                         </a>

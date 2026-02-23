@@ -7,6 +7,12 @@
   color: var(--dialectic-blue-900);
 }
 
+.HomePage h2,
+.HomePage h3 {
+  color: var(--dialectic-blue-900);
+  margin-top: 0;
+}
+
 .HomePage section,
 .HomePage ul {
   background: rgba(255, 255, 255, 0.72);

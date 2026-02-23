@@ -24,18 +24,14 @@ const awesomeLists = ({ topic, subjects = [] }) => {
 
   return (
     <div className={classes.AwesomeLists}>
-      <div className='alert alert-success'>
-        Category view is sorted by link description.
-      </div>
-      <h1>{topic}</h1>
-
       <div className={classes.LinkGrid}>
         {sortedSubjects.map((subject) => {
           const linkLabel = subject.description || subject.domain || 'Open link';
+          const linkMeta = subject.twitter || 'Description';
 
           return (
             <article key={subject.id} className={classes.LinkCard}>
-              <p className={classes.MetaLabel}>Description</p>
+              <p className={classes.MetaLabel}>{linkMeta}</p>
               <a
                 className={classes.LinkTitle}
                 href={subject.url}
@@ -44,8 +40,11 @@ const awesomeLists = ({ topic, subjects = [] }) => {
               >
                 {linkLabel}
               </a>
-              <p className={classes.Meta}>{subject.guest}</p>
-              <p className={classes.Domain}>{subject.domain || 'Unknown source'}</p>
+              <div className={classes.CardFooter}>
+                <p className={classes.Meta}>
+                  {subject.episode ? `${subject.episode}. ` : ''}{subject.guest || 'Unknown guest'}
+                </p>
+              </div>
             </article>
           );
         })}

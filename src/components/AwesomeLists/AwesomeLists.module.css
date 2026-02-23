@@ -11,37 +11,67 @@
 .LinkCard {
   border: 1px solid var(--dialectic-border);
   border-radius: 12px;
-  padding: 14px;
+  padding: 12px;
   background: linear-gradient(170deg, #ffffff, #f8fbff);
   box-shadow: 0 8px 22px rgba(21, 65, 129, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
 }
 
 .LinkTitle {
   display: block;
-  margin-bottom: 8px;
-  font-size: 1.06rem;
+  margin-left: -12px;
+  margin-right: -12px;
+  padding: 6px 12px;
+  margin-bottom: -8px;
+  font-size: 1.2rem;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.1;
   color: var(--dialectic-blue-900);
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.LinkTitle:hover {
+  color: #fff;
+  background: #ff2e88;
 }
 
 .MetaLabel {
-  margin: 0 0 4px;
-  font-size: 0.68rem;
+  margin: 0 0 2px;
+  font-size: 1.46rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   color: var(--dialectic-muted);
+  min-height: 4.6em;
+  line-height: 1.15;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .Meta {
   margin: 0;
-  font-size: 0.82rem;
-  color: var(--dialectic-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.Domain {
-  margin: 4px 0 0;
-  color: var(--dialectic-muted);
-  font-size: 0.76rem;
+.CardFooter {
+  margin: 4px -12px -12px;
+  background: rgb(0, 0, 245);
+  border-radius: 0 0 12px 12px;
+  padding: 1px 12px;
+  text-align: left;
+  color: #fff !important;
+}
+
+.CardFooter .Meta {
+  color: #fff !important;
 }

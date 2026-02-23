@@ -175,6 +175,7 @@ export const buildLinkEntries = (rows) => {
       guest: row.guest,
       episodeTitle: row.episode_title,
       url: row.url,
+      twitter: row.twitter,
       description,
       type: row.type,
       domain,
@@ -183,6 +184,7 @@ export const buildLinkEntries = (rows) => {
       semanticText: [
         row.guest,
         row.episode_title,
+        row.twitter,
         description,
         category,
         domain,
