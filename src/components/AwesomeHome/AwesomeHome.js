@@ -8,7 +8,8 @@ const Homepage = () => {
       <section>
         <h3>Goal</h3>
         <p>
-          This site is a link index for the Dialectic Podcast. It organizes and categories links mentioned in the podcast. I built it to serve as a source of inspiraiton and learning. 
+          This site is a link index for the Dialectic Podcast. It organizes and categorizes links mentioned in the podcast. I built it to serve as a source of inspiration and learning.
+        </p>
         <p>
           It's based on the original Awesome Search / Awesome Lists project:{' '}
           <a href='https://github.com/lockys/NewAwesomeSearch' target='_blank' rel='noreferrer'>
