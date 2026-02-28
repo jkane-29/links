@@ -3,7 +3,7 @@
   margin: 24px auto;
   padding: 22px;
   position: relative;
-  min-height: calc(100vh - 48px);
+  min-height: calc(100vh - 44px);
   overflow: visible;
   border: 1px solid var(--dialectic-border);
   border-radius: 20px 20px 0 0;
@@ -113,6 +113,14 @@
 }
 
 @media (min-width: 768px) {
+  .BodyLayout {
+    min-height: calc(100vh - 146px);
+  }
+
+  .ContentPane {
+    min-height: calc(100vh - 146px);
+  }
+
   .BurgerButton {
     display: none;
   }

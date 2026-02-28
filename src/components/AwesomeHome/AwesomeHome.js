@@ -17,6 +17,13 @@ const Homepage = () => {
             lockys/NewAwesomeSearch
           </a>.
         </p>
+        <p>
+          Made by{' '}
+          <a href='https://jkane-29.github.io' target='_blank' rel='noreferrer'>
+            Jack Kane
+          </a>
+          .
+        </p>
       </section>
 
       <section>
